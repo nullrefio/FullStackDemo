@@ -1,4 +1,4 @@
-namespace Nullref.FullStackDemo.API.CommonModels
+namespace Nullref.FullStackDemo.CommonModels
 {
     /// <summary>
     /// Default implementation of <see cref="IValidatableObject"/>, to support consistent validation. API

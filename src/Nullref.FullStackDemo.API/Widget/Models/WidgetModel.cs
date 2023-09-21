@@ -1,4 +1,3 @@
-using Nullref.FullStackDemo.API.Attributes;
 using Nullref.FullStackDemo.Database.Entity;
 using static Nullref.FullStackDemo.Database.Entity.Widget;
 
@@ -12,10 +11,12 @@ namespace Nullref.FullStackDemo.API.Widget.Models
 
     public class WidgetUpdateModel : IModel
     {
+        [Searchable]
         [Sortable(IsDefault = true)]
         [Required]
         [MaxLength(MaxLengthValues.Code)]
         [Description("The widget code")]
+        [DefaultValue("My defined default value")]
         public string Code { get; set; }
 
         [Sortable]
@@ -23,10 +24,15 @@ namespace Nullref.FullStackDemo.API.Widget.Models
         [DefaultValue(DefaultValues.IsActive)]
         public bool IsActive { get; set; } = DefaultValues.IsActive;
 
+        [Searchable]
         [Required]
         [MaxLength(MaxLengthValues.Description)]
+        [Description("A tooltip for description")]
+        [DefaultValue("what....??")]
+        [DisplayName("My customer header")]
         public string Description { get; set; }
 
+        [Searchable]
         [Sortable]
         [Required]
         [MaxLength(MaxLengthValues.State)]

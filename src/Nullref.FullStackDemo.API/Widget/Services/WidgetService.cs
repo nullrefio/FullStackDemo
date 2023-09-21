@@ -24,7 +24,10 @@ namespace Nullref.FullStackDemo.API.Services
         {
             return _context.Widget
                 .AsQueryable()
-                .ToPagedModel(model, x => x.ToModel());
+                .Mapper(model, x => x.ToModel())
+                .ApplySearch()
+                .ApplySort()
+                .ToPagedModel();
         }
 
         public WidgetModel Get(Guid id)

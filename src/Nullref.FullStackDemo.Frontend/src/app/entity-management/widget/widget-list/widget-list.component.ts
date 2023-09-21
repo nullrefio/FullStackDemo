@@ -12,7 +12,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class WidgetListComponent extends BaseListComponent implements OnInit {
   metadata = WidgetModelMetadata;
-  readonly displayedColumns = [this.metadata.identifier.code, this.metadata.identifier.description];
+  readonly displayedColumns = [this.metadata.identifier.code, this.metadata.identifier.myFruit, this.metadata.identifier.description, this.metadata.identifier.isActive];
 
   constructor(
     override readonly route: ActivatedRoute,

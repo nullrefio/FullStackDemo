@@ -7,6 +7,10 @@ export interface WidgetModel {
    * The widget code
    */
   code: string;
+
+  /**
+   * A tooltip for description
+   */
   description: string;
   id: string;
   isActive: boolean;
@@ -62,6 +66,8 @@ export const WidgetModelMetadata = {
     state: false,
   },
   default: {
+    code: 'My defined default value',
+    description: 'what....??',
     isActive: true,
     myFruit: FruitConstants.Apple,
     state: 'Georgia',
@@ -79,7 +85,7 @@ export const WidgetModelMetadata = {
   },
   displayName: {
     code: 'Code',
-    description: 'Description',
+    description: 'My customer header',
     id: 'Id',
     isActive: 'IsActive',
     myFruit: 'MyFruit',
@@ -87,7 +93,7 @@ export const WidgetModelMetadata = {
   },
   description: {
     code: 'The widget code',
-    description: '',
+    description: 'A tooltip for description',
     id: '',
     isActive: '',
     myFruit: '',

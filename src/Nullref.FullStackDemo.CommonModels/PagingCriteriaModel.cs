@@ -1,4 +1,4 @@
-namespace Nullref.FullStackDemo.API.CommonModels
+namespace Nullref.FullStackDemo.CommonModels
 {
     public interface IPagingCriteriaModel : ISearchCriteriaModel
     {

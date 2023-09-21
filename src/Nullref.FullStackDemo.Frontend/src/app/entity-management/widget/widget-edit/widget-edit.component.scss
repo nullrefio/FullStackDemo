@@ -5,3 +5,12 @@
     max-width: 790px;
   }
 }
+
+.slide-toggle {
+  padding-top: 24;
+  padding-bottom: 12px;
+  padding-left: 14px;
+  mat-slide-toggle {
+    margin-left: 12px;
+  }
+}

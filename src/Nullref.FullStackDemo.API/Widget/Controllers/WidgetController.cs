@@ -1,7 +1,7 @@
-using Nullref.FullStackDemo.API.Services;
-using Nullref.FullStackDemo.API.Widget.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Nullref.FullStackDemo.API.Services;
+using Nullref.FullStackDemo.API.Widget.Models;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Nullref.FullStackDemo.API.Widget.Controllers

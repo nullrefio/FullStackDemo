@@ -23,6 +23,7 @@ import { APP_MODULE_PROVIDERS } from './app.providers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     MatInputModule,
     MatListModule,
     MatPaginatorModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSlideToggleModule
   ],
   providers: [APP_MODULE_PROVIDERS],
   bootstrap: [AppComponent]

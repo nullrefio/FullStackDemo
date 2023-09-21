@@ -1,6 +1,4 @@
-using Nullref.FullStackDemo.API.Attributes;
 using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
