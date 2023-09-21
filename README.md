@@ -21,7 +21,7 @@ This allows you to have Tyepscript code that will break and not compile if your 
  <b>Angular Binding with generated metadata</b>
 </p>
 
-![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/abcb2fb6-61bb-4833-a987-fc2b3549235c)
+![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/3d3a7ba3-fceb-4b21-bd69-26218bc26c88)
 
 
 <br/><br/>
@@ -29,7 +29,7 @@ This allows you to have Tyepscript code that will break and not compile if your 
  <b>Standard Angular HTML</b>
 </p>
 
-![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/a94abaa7-3cab-444b-bfe5-5b16d62fdb75)
+![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/a6664336-2d1c-4f8d-97dd-9b9c42fc6a9d)
 
 
 <br/><br/>
@@ -37,5 +37,6 @@ This allows you to have Tyepscript code that will break and not compile if your 
  <b>Angular HTML with generated metadata</b>
 </p>
 
-![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/cf64cb59-3eb9-48ee-b51e-177564ccc898)
+![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/79d8f108-cfbe-4c68-972f-89d21929bc5c)
+
 
