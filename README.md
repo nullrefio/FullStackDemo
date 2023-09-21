@@ -13,7 +13,8 @@ This allows you to have Tyepscript code that will break and not compile if your 
  <b>Standard Angular Forms Binding</b>
 </p>
 
-![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/86a31788-258b-41a2-9145-f8b9f80b9797)
+![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/e585ef69-6168-4058-b142-f67270da5d57)
+
 
 <br/><br/>
 <p align="center">
