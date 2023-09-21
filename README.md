@@ -8,14 +8,33 @@ This demo project uses C# validation attributes and custon Swagger generation to
 
 This allows you to have Tyepscript code that will break and not compile if your C# objects are modified. Also, all validation is passed down from the C# definitions into Typescript. The form validators including required and max lengths are auto-generated from calls in TS files. HTML prompts, tooltips, and bindings are defined with generated constants that expose a problem immediately if the C# backing objects change.
 
-Standard Angular Forms Binding
-![image](https://github.com/nullrefio/Demo.TypescriptCompiled/assets/7587796/9dbc1abd-5413-492a-899d-06fe3a3ab776)
+<br/><br/>
+<p align="center">
+ <b>Standard Angular Forms Binding</b>
+</p>
 
-Angular Binding with generated metadata
-![image](https://github.com/nullrefio/Demo.TypescriptCompiled/assets/7587796/30fc87e0-d756-4141-84c8-96f4e7efaed7)
+![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/86a31788-258b-41a2-9145-f8b9f80b9797)
 
-Standard Angular HTML
-![image](https://github.com/nullrefio/Demo.TypescriptCompiled/assets/7587796/ea964c39-550c-4515-bf76-b0dbfed8a5ec)
+<br/><br/>
+<p align="center">
+ <b>Angular Binding with generated metadata</b>
+</p>
 
-Angular HTML with generated metadata
-![image](https://github.com/nullrefio/Demo.TypescriptCompiled/assets/7587796/910a8d27-237c-4203-bf5a-2b9ee9d15c36)
+![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/abcb2fb6-61bb-4833-a987-fc2b3549235c)
+
+
+<br/><br/>
+<p align="center">
+ <b>Standard Angular HTML</b>
+</p>
+
+![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/a94abaa7-3cab-444b-bfe5-5b16d62fdb75)
+
+
+<br/><br/>
+<p align="center">
+ <b>Angular HTML with generated metadata</b>
+</p>
+
+![image](https://github.com/nullrefio/FullStackDemo/assets/7587796/cf64cb59-3eb9-48ee-b51e-177564ccc898)
+
