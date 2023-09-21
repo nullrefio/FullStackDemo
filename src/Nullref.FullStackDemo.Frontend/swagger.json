@@ -1,0 +1,467 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Nullref FullStackDemo API",
+    "description": "This is a REST API interface.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/widgets/{id}": {
+      "delete": {
+        "tags": [
+          "Widget"
+        ],
+        "summary": "Delete a widget",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Widget"
+        ],
+        "summary": "Get a single widget",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WidgetModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WidgetModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WidgetModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Widget"
+        ],
+        "summary": "Update a widget",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WidgetUpdateModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WidgetUpdateModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WidgetUpdateModel"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/v1/widgets": {
+      "get": {
+        "tags": [
+          "Widget"
+        ],
+        "summary": "Get a paginated list of widgets",
+        "parameters": [
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "Order",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "maxLength": 100,
+              "type": "string"
+            }
+          },
+          {
+            "name": "Search",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "maxLength": 100,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WidgetModelPaginatedResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WidgetModelPaginatedResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WidgetModelPaginatedResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Widget"
+        ],
+        "summary": "Create a widget",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WidgetUpdateModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WidgetUpdateModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/WidgetUpdateModel"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "FruitConstants": {
+        "enum": [
+          "Apple",
+          "Pear",
+          "Orange"
+        ],
+        "type": "string"
+      },
+      "IdResponseModel": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WidgetModel": {
+        "required": [
+          "code",
+          "description",
+          "id",
+          "isActive",
+          "myFruit",
+          "state"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "displayName": "Code",
+            "description": "The widget code",
+            "allowSort": true
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true,
+            "displayName": "IsActive",
+            "description": "",
+            "allowSort": true
+          },
+          "description": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string",
+            "displayName": "Description",
+            "description": "",
+            "allowSort": false
+          },
+          "state": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "default": "Georgia",
+            "displayName": "State of residence",
+            "description": "What state is this thing from?",
+            "allowSort": true
+          },
+          "myFruit": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FruitConstants"
+              }
+            ],
+            "default": "Apple",
+            "displayName": "MyFruit",
+            "description": "",
+            "allowSort": false
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true,
+            "displayName": "Id",
+            "description": "",
+            "allowSort": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "WidgetModelPaginatedResponseModel": {
+        "required": [
+          "items",
+          "pageNumber",
+          "pageSize",
+          "sortableFields",
+          "totalItems",
+          "totalPages"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WidgetModel"
+            }
+          },
+          "search": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "order": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "totalItems": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "sortableFields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "WidgetUpdateModel": {
+        "required": [
+          "code",
+          "description",
+          "isActive",
+          "myFruit",
+          "state"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string",
+            "displayName": "Code",
+            "description": "The widget code",
+            "allowSort": true
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true,
+            "displayName": "IsActive",
+            "description": "",
+            "allowSort": true
+          },
+          "description": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string",
+            "displayName": "Description",
+            "description": "",
+            "allowSort": false
+          },
+          "state": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "default": "Georgia",
+            "displayName": "State of residence",
+            "description": "What state is this thing from?",
+            "allowSort": true
+          },
+          "myFruit": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FruitConstants"
+              }
+            ],
+            "default": "Apple",
+            "displayName": "MyFruit",
+            "description": "",
+            "allowSort": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Widget",
+      "description": "Widget API"
+    }
+  ]
+}

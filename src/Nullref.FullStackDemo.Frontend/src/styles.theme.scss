@@ -1,0 +1,83 @@
+@use "@angular/material" as mat;
+@use "@angular/material/theming" as theming;
+// Plus imports for other components in your app.
+@use "/src/styles.variables.scss" as vars;
+
+// LEGACY MATERIAL CODE
+
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+@include mat.all-legacy-component-typographies();
+@include mat.legacy-core();
+
+// function for turning a single color into a set of variants based on standard breakpoints
+@function dst-color-variants($color) {
+  @return (
+    50: lighten($color, 70),
+    100: lighten($color, 56),
+    200: lighten($color, 40),
+    300: lighten($color, 24),
+    400: lighten($color, 12.25),
+    500: $color,
+    600: darken($color, 12.25),
+    700: darken($color, 24),
+    800: darken($color, 40),
+    900: darken($color, 56),
+    contrast: (
+      50: theming.$dark-primary-text,
+      100: theming.$dark-primary-text,
+      200: theming.$dark-primary-text,
+      300: theming.$dark-primary-text,
+      400: white,
+      500: white,
+      600: theming.$light-primary-text,
+      700: theming.$light-primary-text,
+      800: theming.$light-primary-text,
+      900: theming.$light-primary-text,
+      a100: theming.$dark-primary-text,
+      a200: theming.$dark-primary-text,
+      a400: white,
+      a700: theming.$light-primary-text,
+    )
+  );
+}
+
+// define the 3 colors with variants needed for material themeing
+$dst-primary: dst-color-variants(vars.$orange);
+$dst-accent: dst-color-variants(vars.$blue);
+$dst-warn: dst-color-variants(vars.$red);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$dst-pallete-primary: mat.define-palette($dst-primary);
+$dst-pallete-accent: mat.define-palette($dst-accent);
+
+// The warn palette is optional (defaults to red).
+$dst-pallete-warn: mat.define-palette($dst-warn);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$dst-app-theme: mat.define-light-theme(
+  $dst-pallete-primary,
+  $dst-pallete-accent,
+  $dst-pallete-warn
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-legacy-component-themes($dst-app-theme);
+
+// V15 MATERIAL CODE
+
+@include mat.core();
+
+// Apply the dark theme by default
+@include mat.core-theme($dst-app-theme);
+@include mat.all-component-themes($dst-app-theme);

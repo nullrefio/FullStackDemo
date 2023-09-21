@@ -1,0 +1,99 @@
+export interface {{typeName}} {
+{{#properties}}
+{{{tsComments}}}{{{identifier}}}{{^required}}?{{/required}}: {{{type}}};
+{{/properties}}
+{{#additionalPropertiesType}}
+
+  [key: string]: {{{.}}};
+{{/additionalPropertiesType}}
+}
+
+export const {{typeName}}Metadata = {
+  identifier: {
+{{#properties}}
+    {{{identifier}}}: '{{{identifier}}}',
+{{/properties}}
+  },
+  maxLength: {
+{{#properties}}
+{{#if schema.maxLength}}
+    {{{identifier}}}: {{{schema.maxLength}}},
+{{/if}}
+{{/properties}}
+  },
+  minLength: {
+{{#properties}}
+{{#if schema.minLength}}
+    {{{identifier}}}: {{{schema.minLength}}},
+{{/if}}
+{{/properties}}
+  },
+  readOnly: {
+{{#properties}}
+{{#if schema.readOnly}}
+    {{{identifier}}}: true,
+{{^}}
+    {{{identifier}}}: false,
+{{/if}}
+{{/properties}}
+  },
+  required: {
+{{#properties}}
+{{#if required}}
+    {{{identifier}}}: true,
+{{^}}
+    {{{identifier}}}: false,
+{{/if}}
+{{/properties}}
+  },
+  nullable: {
+{{#properties}}
+{{#if schema.nullable}}
+    {{{identifier}}}: true,
+{{^}}
+    {{{identifier}}}: false,
+{{/if}}
+{{/properties}}
+  },
+  default: {
+{{#properties}}
+{{#if (isdefinedString schema.default type)}}
+    {{{identifier}}}: '{{{schema.default}}}',
+{{/if}}
+{{#if (isdefinedNumberBool schema.default type)}}
+    {{{identifier}}}: {{{schema.default}}},
+{{/if}}
+{{#if (isdefinedEnum schema.default type)}}
+    {{{identifier}}}: {{type}}.{{{schema.default}}},
+{{/if}}
+{{/properties}}
+  },
+  format: {
+{{#properties}}
+{{#if schema.format}}
+    {{{identifier}}}: '{{{schema.format}}}',
+{{/if}}
+{{/properties}}
+  },
+  allowSort: {
+{{#properties}}
+{{#if (isdefined schema.allowSort)}}
+    {{{identifier}}}: {{{schema.allowSort}}},
+{{/if}}
+{{/properties}}
+  },
+  displayName: {
+{{#properties}}
+{{#if (isdefined schema.displayName)}}
+    {{{identifier}}}: '{{{schema.displayName}}}',
+{{/if}}
+{{/properties}}
+  },
+  description: {
+{{#properties}}
+{{#if (isdefined schema.description)}}
+    {{{identifier}}}: '{{{schema.description}}}',
+{{/if}}
+{{/properties}}
+  },
+}

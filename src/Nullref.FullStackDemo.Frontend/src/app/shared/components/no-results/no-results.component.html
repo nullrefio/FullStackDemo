@@ -1,0 +1,11 @@
+<div class="no-results-container">
+  <div class="no-results-graphic"></div>
+  <p class="no-results-header">{{ errorMessage }}</p>
+  <p class="no-results-text" *ngIf="subtitle">{{ subtitle }}</p>
+  <div class="fixed-height">
+    <button mat-button mat-stroked-button class="create-button" [hidden]="!buttonText" (click)="createButtonClick()">
+      <span class="create-button-text">{{ buttonText }}</span>
+      <mat-icon class="add-icon">add</mat-icon>
+    </button>
+  </div>
+</div>

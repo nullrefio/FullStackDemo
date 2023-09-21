@@ -1,0 +1,20 @@
+@use "/src/styles.variables.scss" as vars;
+
+main {
+  min-height: 100%;
+
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.main-content {
+  text-align: center;
+}
+
+.page-content {
+  text-align: left;
+  padding: 24px;
+}

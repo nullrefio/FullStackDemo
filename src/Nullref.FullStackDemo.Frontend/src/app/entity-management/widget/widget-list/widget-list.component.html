@@ -1,0 +1,33 @@
+<div class="container">
+
+<div class="search-and-add-wrapper">
+    <input [value]="dataSource.search" (search)="handleSearch($event)" />
+    <div class="add-button-wrapper">
+      <button (clickEvent)="navigateToItemAdd()">
+      </button>
+    </div>
+  </div>
+  
+  <div class="table-wrapper">
+    <mat-table [dataSource]="dataSource.items" matSort (matSortChange)="handleSort($event)" [matSortDirection]="getSortDirection()" [matSortActive]="getSortActive()">
+      <ng-container [matColumnDef]="metadata.identifier.code">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!metadata.allowSort.code">{{metadata.displayName.code}}</mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <span class="long-text-ellipsis" [matTooltip]="item.code">{{item.code}}</span>
+        </mat-cell>
+      </ng-container>
+      <ng-container [matColumnDef]="this.metadata.identifier.description">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!metadata.allowSort.description">{{metadata.displayName.description}}</mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <span class="long-text-ellipsis" [matTooltip]="item.description">{{item.description}}</span>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let item; columns: displayedColumns;" (click)="allowEdit && navigateToItemEdit(item.id)" [ngClass]="{'clickable' : allowEdit}"></mat-row>
+    </mat-table>
+    <app-no-results *ngIf="dataSource?.items?.length === 0" errorMessage="No Items to Display" subtitle="Any new items will appear here" [buttonText]="allowAdd ? 'Create Item' : ''" (createButtonAction)="navigateToItemAdd()"></app-no-results>
+    <app-pagination-footer [entityName]="'Item'" [currentPageNumber]="this.dataSource.pageNumber" [currentPageSize]="this.dataSource.pageSize" [totalNumberOfPages]="this.dataSource.totalPages" [totalNumberOfItems]="this.dataSource.totalItems" (paginationEvent)="handlePagination($event)">
+    </app-pagination-footer>
+  </div>
+  
+</div>

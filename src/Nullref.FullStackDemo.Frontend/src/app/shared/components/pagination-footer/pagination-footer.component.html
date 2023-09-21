@@ -1,0 +1,38 @@
+<div class="footer-wrapper" *ngIf="totalNumberOfPages > 0">
+  <div class="pagination-container">
+    <button mat-icon-button (click)="previousPage()" class="icon-button previous-button" [disabled]="currentPageNumber === 1">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <button mat-icon-button (click)="pageChange(1)">
+      <span class="page-number" [class.active]="currentPageNumber === 1">1</span>
+    </button>
+    <span class="ellipsis" *ngIf="currentPageNumber > 4">
+      ...
+    </span>
+    <ng-container *ngFor="let pageNumber of rangeOfVisiblePages">
+      <button mat-icon-button (click)="pageChange(pageNumber)">
+        <span class="page-number" [class.active]="currentPageNumber === pageNumber">{{pageNumber}}</span>
+      </button>
+    </ng-container>
+    <span class="ellipsis" *ngIf="currentPageNumber < totalNumberOfPages - 3">
+      ...
+    </span>
+    <button mat-icon-button (click)="pageChange(totalNumberOfPages)" *ngIf="totalNumberOfPages > 1">
+      <span class="page-number" [class.active]="currentPageNumber === totalNumberOfPages">{{totalNumberOfPages}}</span>
+    </button>
+    <button mat-icon-button (click)="nextPage()" class="icon-button next-button" [disabled]="currentPageNumber === totalNumberOfPages || totalNumberOfPages < 2">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+  </div>
+  <div class="page-size-selector-container">
+    <span class="per-page-text">{{entityName}} per page</span>
+    <mat-form-field appearance="outline" class="page-size-selector">
+      <mat-select [value]="currentPageSize" (selectionChange)="pageSizeChange($event.value)">
+        <mat-option *ngFor="let option of pageSizeOptions" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span *ngIf="totalNumberOfItems > 0" class="of-total-text">of {{totalNumberOfItems}}</span>
+  </div>
+</div>

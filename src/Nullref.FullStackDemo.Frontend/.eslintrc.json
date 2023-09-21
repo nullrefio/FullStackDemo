@@ -1,0 +1,309 @@
+/**
+ * -----------------------------------------------------
+ * NOTES ON CONFIGURATION STRUCTURE
+ * -----------------------------------------------------
+ *
+ * Out of the box, ESLint does not support TypeScript or HTML. Naturally those are the two
+ * main file types we care about in Angular projects, so we have to do a little extra work
+ * to configure ESLint exactly how we need to.
+ *
+ * Fortunately, ESLint gives us an "overrides" configuration option which allows us to set
+ * different lint tooling (parser, plugins, rules etc) for different file types, which is
+ * critical because our .ts files require a different parser and different rules to our
+ * .html (and our inline Component) templates.
+ */
+{
+  "root": true,
+  "overrides": [
+    /**
+     * -----------------------------------------------------
+     * TYPESCRIPT FILES (COMPONENTS, SERVICES ETC) (.ts)
+     * -----------------------------------------------------
+     */
+    {
+      "files": ["src/**/*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": [
+          "tsconfig.json"
+        ],
+        "sourceType": "module",
+        "createDefaultProgram": true
+      },
+      "plugins": [
+        "sonarjs",
+        "eslint-plugin-import",
+        "eslint-plugin-prefer-arrow",
+        "@angular-eslint/eslint-plugin",
+        "eslint-plugin-jsdoc",
+        "@typescript-eslint"
+      ],
+      "extends": [
+        "plugin:sonarjs/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "rules": {
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@typescript-eslint/no-floating-promises": [
+          "off",
+          {
+            "ignoreIIFE": false
+          }
+        ],
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/unbound-method": "off",
+        "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/prefer-regexp-exec": "error",
+        "@angular-eslint/no-output-native": "error",
+        "sonarjs/cognitive-complexity": "error",
+        "quote-props": [ "error", "consistent-as-needed" ],
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "comma-spacing": ["error",
+          { "before": false,
+            "after": true
+          }
+        ],
+        "@angular-eslint/use-lifecycle-interface": "error",
+        "no-dupe-else-if": "error",
+        "no-delete-var": "error",
+        "max-params": "off",
+        "default-case-last": "error",
+        "no-multi-str": "error",
+        "@angular-eslint/component-class-suffix": "error",
+        "@angular-eslint/directive-class-suffix": "error",
+        "@typescript-eslint/explicit-module-boundary-types": ["error", {
+          "allowArgumentsExplicitlyTypedAsAny": true
+        }],
+// ToDo Turn on
+        "@typescript-eslint/no-unnecessary-condition": "off",
+        "@typescript-eslint/no-for-in-array": "error",
+        "no-param-reassign": "error",
+        "prefer-template": "off",
+// ToDo Turn On
+        "no-self-assign": "off",
+        "max-statements-per-line": ["error", {"max":  2}],
+        "@angular-eslint/no-host-metadata-property": "error",
+        "@angular-eslint/no-input-rename": "error",
+        "@angular-eslint/no-inputs-metadata-property": "error",
+        "@angular-eslint/no-output-rename": "error",
+        "@angular-eslint/no-outputs-metadata-property": "error",
+        "@angular-eslint/use-pipe-transform-interface": "error",
+        "@typescript-eslint/adjacent-overload-signatures": "error",
+        "@typescript-eslint/ban-types": [
+          "error",
+          {
+            "types": {
+              "Object": {
+                "message": "Avoid using the `Object` type. Did you mean `object`?"
+              },
+              "Function": {
+                "message": "Avoid using the `Function` type. Prefer a specific function type, like `() => void`."
+              },
+              "Boolean": {
+                "message": "Avoid using the `Boolean` type. Did you mean `boolean`?"
+              },
+              "Number": {
+                "message": "Avoid using the `Number` type. Did you mean `number`?"
+              },
+              "String": {
+                "message": "Avoid using the `String` type. Did you mean `string`?"
+              },
+              "Symbol": {
+                "message": "Avoid using the `Symbol` type. Did you mean `symbol`?"
+              }
+            }
+          }
+        ],
+        "@typescript-eslint/consistent-type-assertions": "error",
+        "@typescript-eslint/dot-notation": "error",
+        "@typescript-eslint/indent": ["off", 2],
+        "@typescript-eslint/member-delimiter-style": [
+          "error",
+          {
+            "multiline": {
+              "delimiter": "semi",
+              "requireLast": true
+            },
+            "singleline": {
+              "delimiter": "semi",
+              "requireLast": true
+            }
+          }
+        ],
+        "@typescript-eslint/member-ordering": "error",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": ["variable", "function"],
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow",
+            "modifiers": ["public"]
+          }
+        ],
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-empty-interface": "error",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-inferrable-types": [
+          "error",
+          {
+            "ignoreParameters": true
+          }
+        ],
+        "@typescript-eslint/no-misused-new": "error",
+        "@typescript-eslint/no-namespace": "error",
+        "@typescript-eslint/no-parameter-properties": "off",
+        "@typescript-eslint/no-unused-expressions": "error",
+        "@typescript-eslint/no-use-before-define": "error",
+        "@typescript-eslint/prefer-for-of": "error",
+        "@typescript-eslint/prefer-function-type": "error",
+        "@typescript-eslint/prefer-namespace-keyword": "error",
+        "@typescript-eslint/quotes": [
+          "error",
+          "single"
+        ],
+        "@typescript-eslint/require-await": "error",
+        "@typescript-eslint/semi": [
+          "error",
+          "always"
+        ],
+        "@typescript-eslint/triple-slash-reference": [
+          "error",
+          {
+            "path": "always",
+            "types": "prefer-import",
+            "lib": "always"
+          }
+        ],
+        "@typescript-eslint/type-annotation-spacing": "error",
+        "@typescript-eslint/unified-signatures": "error",
+        "brace-style": [
+          "error",
+          "1tbs",
+          {
+            "allowSingleLine": true
+          }
+        ],
+        "comma-dangle": "off",
+        "complexity": ["error"],
+        "constructor-super": "error",
+        "curly": "error",
+        "eol-last": "error",
+        "eqeqeq": [
+          "error",
+          "smart"
+        ],
+        "guard-for-in": "error",
+        "id-blacklist": [
+          "error",
+          "any",
+          "Number",
+          "number",
+          "String",
+          "string",
+          "Boolean",
+          "boolean",
+          "Undefined",
+          "undefined",
+          "password",
+          "Password"
+        ],
+        "id-match": "error",
+        "import/no-default-export": "error",
+        "import/no-deprecated": "error",
+        "import/order": "off",
+        "jsdoc/check-alignment": "error",
+        "jsdoc/check-indentation": "error",
+        "jsdoc/newline-after-description": "error",
+        "max-classes-per-file": [
+          "error",
+          1
+        ],
+        "max-lines-per-function": ["error", {"max": 100, "skipBlankLines": true, "skipComments": true}],
+        "new-parens": "error",
+        "no-bitwise": "error",
+        "no-caller": "error",
+        "no-cond-assign": "error",
+        "no-debugger": "error",
+        "sonarjs/no-duplicate-string": "error",
+        "no-empty": "off",
+        "no-eval": "error",
+        "no-fallthrough": "error",
+        "no-new-wrappers": "error",
+        "no-restricted-imports": [
+          "error",
+          "rxjs/Rx"
+        ],
+        "@typescript-eslint/no-shadow": "error",
+        "no-throw-literal": "error",
+        "no-trailing-spaces": "error",
+        "no-undef-init": "error",
+        "no-underscore-dangle": "off",
+        "no-unsafe-finally": "error",
+        "no-unused-labels": "error",
+        "@typescript-eslint/no-unused-vars": "error",
+        "no-var": "error",
+        "one-var": [
+          "error",
+          "never"
+        ],
+        "prefer-arrow/prefer-arrow-functions": "error",
+        "prefer-const": "error",
+        "radix": "error",
+        "spaced-comment": [
+          "error",
+          "always",
+          {
+            "markers": [
+              "/"
+            ]
+          }
+        ],
+        "use-isnan": "error",
+        "valid-typeof": "off"
+      }
+    },
+
+    /**
+     * -----------------------------------------------------
+     * COMPONENT TEMPLATES
+     * -----------------------------------------------------
+     */
+    {
+      "files": ["*.component.html"],
+      "extends": [
+        
+      ],
+      "rules": {
+        /**
+         * Any template/HTML related rules you wish to use/reconfigure over and above the
+         * recommended set provided by the @angular-eslint project would go here.
+         */
+      }
+    },
+    {
+      "files": [
+        "src/**/*.spec.ts"
+      ],
+      "env": {
+        "jasmine": true
+      },
+      "extends": [
+        
+      ],
+      "rules": {
+        // TODO: consider implementing these rules
+        "jasmine/no-disabled-tests": "off",
+        "jasmine/new-line-before-expect": "off",
+        "jasmine/new-line-between-declarations": "off",
+        "max-classes-per-file": "off"
+      }
+    }
+
+  ]
+}
