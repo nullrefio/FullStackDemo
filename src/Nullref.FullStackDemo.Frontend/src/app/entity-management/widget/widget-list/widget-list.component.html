@@ -1,10 +1,10 @@
 <div class="container">
 
-<div class="search-and-add-wrapper">
-    <input [value]="dataSource.search" (search)="handleSearch($event)" />
+  <div class="search-and-add-wrapper">
+    <input matInput placeholder="Search..." [(ngModel)]="dataSource.search" (search)="handleSearch($event)" />
+    <button mat-button mat-raised-button (click)="search()">Search</button>
     <div class="add-button-wrapper">
-      <button (clickEvent)="navigateToItemAdd()">
-      </button>
+      <button mat-button mat-raised-button (click)="navigateToItemAdd()">Add</button>
     </div>
   </div>
   

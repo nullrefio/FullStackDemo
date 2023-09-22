@@ -26,6 +26,10 @@ export class WidgetListComponent extends BaseListComponent implements OnInit {
     await this.reloadItems();
   }
 
+  async search(): Promise<void> {
+    await this.reloadItems();
+  }
+
   override async reloadItems(): Promise<void> {
     super.reloadItems();
     this.dataSource = await firstValueFrom(this.widgetService.apiV1WidgetsGet({
