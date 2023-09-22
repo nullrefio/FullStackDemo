@@ -1,6 +1,6 @@
+using Microsoft.AspNetCore.Http.Features;
 using Nullref.FullStackDemo.API.ServiceInstallers;
 using Nullref.FullStackDemo.API.Services;
-using Microsoft.AspNetCore.Http.Features;
 using System.Reflection;
 
 namespace Nullref.FullStackDemo.API

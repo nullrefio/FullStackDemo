@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { WidgetModel } from '@app/api/models';
+import { FruitConstants, WidgetModel } from '@app/api/models';
 import { WidgetModelMetadata } from '@app/api/models/widget-model';
 import { WidgetService } from '@app/api/services';
 import { metaFormField } from '@app/shared/utilities/validation.utilities';
@@ -17,6 +17,7 @@ export class WidgetEditComponent implements OnInit {
   item?: WidgetModel;
   form: UntypedFormGroup;
   metadata = WidgetModelMetadata;
+  fruitOptions: string[] = Object.values(FruitConstants);
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -28,6 +29,8 @@ export class WidgetEditComponent implements OnInit {
     this.form = formBuilder.group({
       [this.metadata.identifier.code]: metaFormField(this.metadata, this.metadata.identifier.code),
       [this.metadata.identifier.description]: metaFormField(this.metadata, this.metadata.identifier.description),
+      [this.metadata.identifier.isActive]: metaFormField(this.metadata, this.metadata.identifier.isActive),
+      [this.metadata.identifier.myFruit]: metaFormField(this.metadata, this.metadata.identifier.myFruit),
     });
   }
 
@@ -58,4 +61,15 @@ export class WidgetEditComponent implements OnInit {
         this.router.navigate(['..'], { relativeTo: this.route });
       });
   }
+
+  async onSelectMyFruitButtonClick(): Promise<void> {
+    // const creditReviewApprovalLimitId: string | null = this.form.value.creditReviewApprovalLimitId;
+    // if (creditReviewApprovalLimitId) {
+    //   this.availableUsers = (await firstValueFrom(
+    //     this.creditReviewService.apiV1CreditReviewsIdAvailableApprovalUsersCreditApprovalLimitIdGet({ id: this.creditReview.id, creditApprovalLimitId: creditReviewApprovalLimitId })
+    //     , { defaultValue: { items: [] } })
+    //   ).items;
+    // }
+  }
+
 }

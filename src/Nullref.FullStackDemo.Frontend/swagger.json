@@ -297,6 +297,7 @@
             "maxLength": 100,
             "minLength": 1,
             "type": "string",
+            "default": "My defined default value",
             "displayName": "Code",
             "description": "The widget code",
             "allowSort": true
@@ -312,8 +313,9 @@
             "maxLength": 500,
             "minLength": 1,
             "type": "string",
-            "displayName": "Description",
-            "description": "",
+            "default": "what....??",
+            "displayName": "My customer header",
+            "description": "A tooltip for description",
             "allowSort": false
           },
           "state": {
@@ -414,6 +416,7 @@
             "maxLength": 100,
             "minLength": 1,
             "type": "string",
+            "default": "My defined default value",
             "displayName": "Code",
             "description": "The widget code",
             "allowSort": true
@@ -429,8 +432,9 @@
             "maxLength": 500,
             "minLength": 1,
             "type": "string",
-            "displayName": "Description",
-            "description": "",
+            "default": "what....??",
+            "displayName": "My customer header",
+            "description": "A tooltip for description",
             "allowSort": false
           },
           "state": {

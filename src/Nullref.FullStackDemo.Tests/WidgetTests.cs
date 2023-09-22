@@ -1,5 +1,4 @@
 using Nullref.FullStackDemo.API.Services;
-using Microsoft.AspNetCore.Mvc;
 using Xunit;
 
 namespace Nullref.FullStackDemo.Tests
@@ -52,8 +51,49 @@ namespace Nullref.FullStackDemo.Tests
             var paging = new API.Widget.Models.WidgetQueryModel();
             var result = service.Get(paging);
             Assert.NotNull(result);
-            Assert.Equal(113, result.TotalItems);
+            Assert.Equal(Database.DataContext.MAX_ITEMS, result.TotalItems);
             Assert.Equal(10, result.Items.Count);
         }
+
+        [Fact]
+        public void PagingWithFilterTest()
+        {
+            var service = new WidgetService(_context);
+
+            var paging = new API.Widget.Models.WidgetQueryModel { Search = "12" };
+            var result = service.Get(paging);
+            Assert.NotNull(result);
+            Assert.Equal(12, result.TotalItems);
+            Assert.Equal(10, result.Items.Count);
+
+            //Select with order by clause (case insensitive)
+            paging = new API.Widget.Models.WidgetQueryModel { Search = "12", Order = "CodE,AsC" };
+            result = service.Get(paging);
+            Assert.Equal(12, result.TotalItems);
+            Assert.Equal(10, result.Items.Select(x => x.Code).Distinct().Count());
+            Assert.Equal(result.Items.Select(x => x.Code).OrderBy(x => x), result.Items.Select(x => x.Code));
+
+            //Select with order by clause (case insensitive)
+            paging = new API.Widget.Models.WidgetQueryModel { Search = "12", Order = "CodE,desC" };
+            result = service.Get(paging);
+            Assert.Equal(12, result.TotalItems);
+            Assert.Equal(10, result.Items.Select(x => x.Code).Distinct().Count());
+            Assert.Equal(result.Items.Select(x => x.Code).OrderByDescending(x => x), result.Items.Select(x => x.Code));
+        }
+
+        [Fact]
+        public void DeleteItem()
+        {
+            var service = new WidgetService(_context);
+            var paging = new API.Widget.Models.WidgetQueryModel();
+            var result = service.Get(paging);
+            Assert.NotEmpty(result.Items);
+            var count = result.TotalItems;
+
+            service.Delete(result.Items.First().Id);
+            result = service.Get(paging);
+            Assert.Equal(count - 1, result.TotalItems);
+        }
+
     }
 }

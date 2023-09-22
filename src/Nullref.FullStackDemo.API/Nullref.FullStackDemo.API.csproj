@@ -18,11 +18,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="CommonModels\" />
-	</ItemGroup>
-
-	<ItemGroup>
+	  <ProjectReference Include="..\Nullref.FullStackDemo.CommonModels\Nullref.FullStackDemo.CommonModels.csproj" />
+	  <ProjectReference Include="..\Nullref.FullStackDemo.DatabaseFunctional\Nullref.FullStackDemo.DatabaseFunctional.csproj" />
 	  <ProjectReference Include="..\Nullref.FullStackDemo.Database\Nullref.FullStackDemo.Database.csproj" />
+	  <ProjectReference Include="..\Nullref.FullStackDemo.TextToQuery\Nullref.FullStackDemo.TextToQuery.csproj" />
 	</ItemGroup>
 
 </Project>

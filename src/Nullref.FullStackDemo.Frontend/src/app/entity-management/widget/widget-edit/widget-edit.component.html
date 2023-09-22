@@ -1,44 +1,60 @@
-<div class="app-page-container">
+  <div class="container">
 
-    <div class="container">
-  
-      <div class="app-header-container">
-        <div class="header-primary-row">
-          <h1>Widget</h1>
-        </div>
-      </div>  
- 
-      <form *ngIf="form" [formGroup]="form">
-        <mat-card class="table-wrapper">
-  
-          <mat-form-field>
-            <mat-label>{{metadata.displayName.code}}</mat-label>
-            <input matInput [formControlName]="metadata.identifier.code"
-              [matTooltip]="metadata.description.code"
-              [maxlength]="metadata.maxLength.code">
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>{{metadata.displayName.description}}</mat-label>
-            <input matInput [formControlName]="metadata.identifier.description"
-              [matTooltip]="metadata.description.description"
-              [maxlength]="metadata.maxLength.description">
-          </mat-form-field>
-        </mat-card>
-  
-        <div class="button-block">
-          <div>
-            <button *ngIf="isEditMode" mat-button mat-raised-button class="delete-button"
-              type="button" (click)="onDelete()" matTooltip="Delete Item">Delete</button>
+    <div class="app-header-container">
+      <div class="header-primary-row">
+        <h1>Widget</h1>
+      </div>
+    </div>  
+
+    <form *ngIf="form" [formGroup]="form">
+      <mat-card class="table-wrapper">
+
+        <mat-form-field>
+          <mat-label>{{metadata.displayName.code}}</mat-label>
+          <input matInput [formControlName]="metadata.identifier.code"
+            [matTooltip]="metadata.description.code"
+            [maxlength]="metadata.maxLength.code">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{metadata.displayName.myFruit}}</mat-label>
+          <mat-select [formControlName]="metadata.identifier.myFruit" (selectionChange)="onSelectMyFruitButtonClick()">
+            <mat-option *ngFor="let item of fruitOptions" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{metadata.displayName.description}}</mat-label>
+          <input matInput [formControlName]="metadata.identifier.description"
+            [matTooltip]="metadata.description.description"
+            [maxlength]="metadata.maxLength.description">
+        </mat-form-field>
+
+        <div class="mat-mdc-form-field">
+          <div class="slide-toggle">
+            <mat-label>{{metadata.displayName.isActive}}</mat-label>
+            <mat-slide-toggle color="primary" [formControlName]="metadata.identifier.isActive"
+              [matTooltip]="metadata.description.isActive">
+            </mat-slide-toggle>
           </div>
-          <div>
-            <button appPreventDoubleClick (click)="onSubmit()" id="submit" mat-button
-              mat-raised-button color="yellow" type="submit" [disabled]="form.invalid">Submit</button>
-            <button mat-button mat-raised-button routerLink="..">Cancel</button>
-          </div>
         </div>
-  
-      </form>
-  
-    </div>
+
+      </mat-card>
+
+      <div class="button-block">
+        <div>
+          <button *ngIf="isEditMode" mat-button mat-raised-button class="delete-button"
+            type="button" (click)="onDelete()" matTooltip="Delete Item">Delete</button>
+        </div>
+        <div>
+          <button appPreventDoubleClick (click)="onSubmit()" id="submit" mat-button
+            mat-raised-button color="yellow" type="submit" [disabled]="form.invalid">Submit</button>
+          <button mat-button mat-raised-button routerLink="..">Cancel</button>
+        </div>
+      </div>
+
+    </form>
+
   </div>
-  

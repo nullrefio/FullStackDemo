@@ -95,7 +95,6 @@ button {
   text-decoration: none;
 }
 
-// This controls the header for all mat-cards
 mat-card,
 mat-mdc-card {
   margin-top: 10px;
@@ -450,6 +449,7 @@ h2.mat-dialog-title {
 // Add a page bottom buffer so controls are not flush
 .container {
   padding-bottom: 40px;
+  max-width: 1200px;
 }
 
 .mat-paginator-outer-container {
@@ -515,22 +515,14 @@ button {
 .search-and-add-wrapper {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   margin-bottom: 24px;
 
-  &.full-width {
-    display: block;
-    width: 100%;
-  }
-
-  .mat-form-field-wrapper {
-    padding-bottom: unset;
-  }
-
-  .spacer-for-search-bar {
-    height: 44px;
-    margin-bottom: 1.3438em;
+  input {
+    width:400px;
+    height:24px;
+    padding:2px 10px;
   }
 }
 
@@ -561,52 +553,11 @@ button {
   }
 }
 
-.app-page-container1 {
-  margin-top: -44px;
-
-  .app-header-container {
-    margin-bottom: 16px;
-
-    &.no-subtitle {
-      margin-bottom: unset;
-    }
-
-    .header-primary-row {
-      display: flex;
-      gap: 4px;
-      align-items: flex-start;
-
-      h1 {
-        font-size: 32px;
-        line-height: 40px;
-        font-weight: 500;
-        color: vars.$neutrals-not-white;
-      }
-    }
-
-    .header-secondary-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-
-      p {
-        font-size: 18px;
-        line-height: 32px;
-        color: vars.$steel-grey;
-      }
-    }
-  }
-
+.main-content {
   .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .mat-card {
-    max-width: 790px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
   }
 }
 

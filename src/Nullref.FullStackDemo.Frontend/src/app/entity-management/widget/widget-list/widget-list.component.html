@@ -1,27 +1,44 @@
 <div class="container">
 
-<div class="search-and-add-wrapper">
-    <input [value]="dataSource.search" (search)="handleSearch($event)" />
+  <div class="search-and-add-wrapper">
+    <input matInput placeholder="Search..." [(ngModel)]="dataSource.search" (search)="handleSearch($event)" />
+    <button mat-button mat-raised-button (click)="search()">Search</button>
     <div class="add-button-wrapper">
-      <button (clickEvent)="navigateToItemAdd()">
-      </button>
+      <button mat-button mat-raised-button (click)="navigateToItemAdd()">Add</button>
     </div>
   </div>
   
   <div class="table-wrapper">
     <mat-table [dataSource]="dataSource.items" matSort (matSortChange)="handleSort($event)" [matSortDirection]="getSortDirection()" [matSortActive]="getSortActive()">
+
       <ng-container [matColumnDef]="metadata.identifier.code">
         <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!metadata.allowSort.code">{{metadata.displayName.code}}</mat-header-cell>
         <mat-cell *matCellDef="let item">
           <span class="long-text-ellipsis" [matTooltip]="item.code">{{item.code}}</span>
         </mat-cell>
       </ng-container>
+
+      <ng-container [matColumnDef]="this.metadata.identifier.myFruit">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!metadata.allowSort.myFruit">{{metadata.displayName.myFruit}}</mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <span class="long-text-ellipsis" [matTooltip]="item.myFruit">{{item.myFruit}}</span>
+        </mat-cell>
+      </ng-container>
+
       <ng-container [matColumnDef]="this.metadata.identifier.description">
         <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!metadata.allowSort.description">{{metadata.displayName.description}}</mat-header-cell>
         <mat-cell *matCellDef="let item">
           <span class="long-text-ellipsis" [matTooltip]="item.description">{{item.description}}</span>
         </mat-cell>
       </ng-container>
+
+      <ng-container [matColumnDef]="this.metadata.identifier.isActive">
+        <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!metadata.allowSort.isActive">{{metadata.displayName.isActive}}</mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <span class="long-text-ellipsis" [matTooltip]="item.isActive">{{item.isActive}}</span>
+        </mat-cell>
+      </ng-container>
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let item; columns: displayedColumns;" (click)="allowEdit && navigateToItemEdit(item.id)" [ngClass]="{'clickable' : allowEdit}"></mat-row>
     </mat-table>
