@@ -314,7 +314,7 @@
             "minLength": 1,
             "type": "string",
             "default": "what....??",
-            "displayName": "My customer header",
+            "displayName": "My custom header",
             "description": "A tooltip for description",
             "allowSort": false
           },
@@ -433,7 +433,7 @@
             "minLength": 1,
             "type": "string",
             "default": "what....??",
-            "displayName": "My customer header",
+            "displayName": "My custom header",
             "description": "A tooltip for description",
             "allowSort": false
           },

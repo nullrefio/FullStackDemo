@@ -23,7 +23,6 @@ namespace Nullref.FullStackDemo.API.Services
         public PaginatedResponseModel<WidgetModel> Get(WidgetQueryModel model)
         {
             return _context.Widget
-                .AsQueryable()
                 .Mapper(model, x => x.ToModel())
                 .ApplySearch()
                 .ApplySort()

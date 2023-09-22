@@ -9,8 +9,7 @@ namespace Nullref.FullStackDemo.Tests
     public class ApiSpecTest : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
         private readonly HttpClient _client;
-        private const string AngularProjectFolder = "" +
-            "Nullref.FullStackDemo.Frontend";
+        private const string AngularProjectFolder = "Nullref.FullStackDemo.Frontend";
 
         public ApiSpecTest(CustomWebApplicationFactory<Startup> factory)
         {
@@ -18,7 +17,7 @@ namespace Nullref.FullStackDemo.Tests
         }
 
         [Fact]
-        public async Task OutputApiSpecJson()
+        public async Task OutputApi()
         {
             var response = await _client.SendAsync(new HttpRequestMessage
             {
