@@ -8,6 +8,9 @@ namespace Nullref.FullStackDemo.Database
         DbSet<Widget, Guid> Widget { get; }
     }
 
+    /// <summary>
+    /// Fake database context
+    /// </summary>
     public class DataContext : IDataContext
     {
         public const int MAX_ITEMS = 167;

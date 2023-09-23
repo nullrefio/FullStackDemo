@@ -27,6 +27,7 @@ export class WidgetListComponent extends BaseListComponent implements OnInit {
   }
 
   async search(): Promise<void> {
+    this.dataSource.pageNumber = 1;
     await this.reloadItems();
   }
 

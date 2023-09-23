@@ -29,7 +29,7 @@ namespace Nullref.FullStackDemo.API.Widget.Models
         [MaxLength(MaxLengthValues.Description)]
         [Description("A tooltip for description")]
         [DefaultValue("what....??")]
-        [DisplayName("My customer header")]
+        [DisplayName("My custom header")]
         public string Description { get; set; }
 
         [Searchable]

@@ -1,8 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
+using System.Linq.Expressions;
 
 namespace Nullref.FullStackDemo.Database.Infrastructure
 {
-    public class DbSet<T, K> : IEnumerable<T>
+    /// <summary>
+    /// Fake database table/collection
+    /// </summary>
+    public class DbSet<T, K> : IQueryable<T>
         where T : IDatabaseItem<K>
         where K : struct
     {
@@ -12,7 +16,11 @@ namespace Nullref.FullStackDemo.Database.Infrastructure
 
         IEnumerator IEnumerable.GetEnumerator() => _cache.GetEnumerator();
 
-        public IQueryable<T> AsQueryable => _cache.AsQueryable();
+        Type IQueryable.ElementType => typeof(T);
+
+        Expression IQueryable.Expression => _cache.AsQueryable().Expression;
+
+        IQueryProvider IQueryable.Provider => _cache.AsQueryable().Provider;
 
         public void Add(T item)
         {

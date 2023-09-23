@@ -78,7 +78,7 @@ export const WidgetUpdateModelMetadata = {
   },
   displayName: {
     code: 'Code',
-    description: 'My customer header',
+    description: 'My custom header',
     isActive: 'IsActive',
     myFruit: 'MyFruit',
     state: 'State of residence',
