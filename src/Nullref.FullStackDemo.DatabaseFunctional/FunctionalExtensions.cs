@@ -57,27 +57,6 @@ namespace Nullref.FullStackDemo.DatabaseFunctional
 
         #endregion
 
-        #region ToListModel
-
-        //public static async Task<ListItemsModel<TModel>>
-        //    ToListModelAsync<TModel, TEntity>(this IQueryable<TEntity> query,
-        //            ISearchCriteriaModel search,
-        //            Func<TEntity, TModel> mapper)
-        //    where TModel : class, IModel
-        //    where TEntity : class, IDatabaseItem, new()
-        //        => new ListItemsModel<TModel>
-        //        {
-        //            Items = await query
-        //                .ApplySearch(search)
-        //                .ApplySort<TModel, TEntity>(search)
-        //                .ToList()
-        //                .ProjectListAsync(mapper),
-        //            Search = search.Search,
-        //            Order = search.Order,
-        //        };
-
-        #endregion
-
         /// <summary>
         /// Use this for "AnyAsync" methods to throw an error on true statements
         /// </summary>
@@ -129,44 +108,6 @@ namespace Nullref.FullStackDemo.DatabaseFunctional
                 Order = query.Model.Order,
             };
         }
-
-        //private async static Task<ListItemsModel<TModelOut>>
-        //   ToListModel<TModel, TEntity, TModelOut>(this IQueryable<TEntity> query,
-        //           Expression<Func<TEntity, bool>> predicate,
-        //           ISearchCriteriaModel paging,
-        //           Func<TEntity, TModelOut> mapper,
-        //           Func<List<TEntity>, Task>? preMapAction = null, IDataContext? context = null)
-        //       where TModel : class, IModel, TModelOut
-        //       where TModelOut : class, IModel
-        //       where TEntity : class, IDatabaseItem, new()
-        //{
-        //    var lambda = query.ApplySearch(paging);
-        //    if (predicate != null)
-        //    {
-        //        lambda = lambda.Where(predicate);
-        //    }
-        //    lambda = lambda.ApplySort<TModel, TEntity>(paging);
-
-        //    var items = lambda.ToList();
-        //    var count = lambda.Count();
-
-        //    //If there is pre-mapping function then run it
-        //    if (preMapAction != null)
-        //        await preMapAction(items);
-
-        //    return new ListItemsModel<TModelOut>
-        //    {
-        //        Items = items.AsParallel().AsOrdered().Select(mapper).ToList(),
-        //        Search = paging.Search,
-        //        Order = paging.Order,
-        //    };
-        //}
-
-        //public static Task<ListItemsModel<TModel>>
-        //   ToListModel<TModel, TEntity>(this IDatabaseModelMapper<TModel, TEntity> query, IDataContext? context = null)
-        //       where TModel : class, IModel
-        //       where TEntity : class, IDatabaseItem, new()
-        //    => query.AsQuerable().ToListModel<TModel, TEntity, TModel>(null, query.Model, query.Mapper, query.PreMapAction, context);
 
         #endregion
 
@@ -268,14 +209,6 @@ namespace Nullref.FullStackDemo.DatabaseFunctional
         [return: System.Diagnostics.CodeAnalysis.NotNull]
         public static IQueryable<TModel> ApplyPaging<TModel>(this IQueryable<TModel> source, IPagingCriteriaModel model)
             where TModel : IDatabaseItem => source.Skip(model.StartIndex()).Take(model.PageSize);
-
-        //public static IDatabaseModelMapper<TModel, TEntity> ApplySearch<TModel, TEntity>(this IDatabaseModelMapper<TModel, TEntity> source)
-        //    where TModel : IModel
-        //    where TEntity : IDatabaseItem
-        //{
-        //    source.ApplyQuery(source.AsQuerable().ApplySearch(source.Model));
-        //    return source;
-        //}
 
         public static IDatabaseModelMapper<TModel, TEntity> ApplySearch<TModel, TEntity>(this IDatabaseModelMapper<TModel, TEntity> source, Expression<Func<TEntity, bool>> predicate)
             where TModel : IModel
