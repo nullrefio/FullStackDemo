@@ -1,8 +1,14 @@
-# Compile-time Check Typescript
+# Sample REST and Angular projects with advanced programming concepts
 
 Using C# to control Angular validation and controls
 
-[Medium Article](https://medium.com/@nullref/compile-time-checked-typescript-db5b60125d00)
+[Compile-time Checked Typescript](https://medium.com/@nullref/compile-time-checked-typescript-db5b60125d00)
+
+[Synchronize Angular and C#](https://medium.com/@nullref/how-to-synchronize-angular-with-c-c81bb698498c)
+
+[Functional C# with examples](https://medium.com/@nullref/functional-c-with-examples-4e9fc2ff236f)
+
+[C# static analysis with unit tests](https://medium.com/@nullref/c-unit-test-static-analysis-ecaacf984df7)
 
 This demo project uses C# validation attributes and custon Swagger generation to define compile-tim checked Typescript. The Angular controls and HTML are defined from object metadata constants emitted from the Swagger document including nullable, default, allow sort, data type, readonly, maxlength, minlength, required, identifier, display name, and description (tooltip).
 
