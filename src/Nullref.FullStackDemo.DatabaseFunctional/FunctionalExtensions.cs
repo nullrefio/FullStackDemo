@@ -91,7 +91,7 @@ namespace Nullref.FullStackDemo.DatabaseFunctional
         #region ToPagedModel
 
         public static PaginatedResponseModel<TModel>
-           ToPagedModel<TModel, TEntity>(this IDatabaseModelMapper<TModel, TEntity> query, IDataContext? context = null)
+           ToPagedModel<TModel, TEntity>(this IDatabaseModelMapper<TModel, TEntity> query)
                where TModel : class, IModel
                where TEntity : class, IDatabaseItem, new()
         {
@@ -100,7 +100,7 @@ namespace Nullref.FullStackDemo.DatabaseFunctional
 
             return new PaginatedResponseModel<TModel>
             {
-                Items = items.AsParallel().AsOrdered().Select(x => query.Mapper(x)).ToList(),
+                Items = items.Select(x => query.Mapper(x)).ToList(),
                 PageSize = query.Model.PageSize,
                 PageNumber = query.Model.PageNumber,
                 TotalItems = count,
@@ -204,7 +204,7 @@ namespace Nullref.FullStackDemo.DatabaseFunctional
 
         #endregion
 
-        #region Mongo Methods
+        #region Database Methods
 
         [return: System.Diagnostics.CodeAnalysis.NotNull]
         public static IQueryable<TModel> ApplyPaging<TModel>(this IQueryable<TModel> source, IPagingCriteriaModel model)

@@ -1,6 +1,6 @@
 namespace Nullref.FullStackDemo.CommonModels
 {
-    public interface ISearchCriteriaModel
+    public interface ISearchCriteriaModel : IModel
     {
         string? Order { get; set; }
         string? Search { get; set; }

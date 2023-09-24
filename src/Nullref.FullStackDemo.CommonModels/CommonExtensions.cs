@@ -17,15 +17,9 @@ namespace Nullref.FullStackDemo.CommonModels
         }
 
         [return: NotNull]
-        public static T ThrowIfNotFound<T>(this T item, string? objectName = null) where T : class?
-        {
-            if (item is Task)
-            {
-                throw new ArgumentException("Parameter cannot be a Task");
-            }
-
-            return item ?? throw new EntityNotFoundException(objectName);
-        }
+        public static T ThrowIfNotFound<T>(this T item, string? objectName = null)
+            where T : class?
+            => item ?? throw new EntityNotFoundException(objectName);
 
         public static string? SplitTitleCase(this string? @this)
         {

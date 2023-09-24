@@ -1,6 +1,6 @@
 namespace Nullref.FullStackDemo.CommonModels
 {
-    public interface IResponseModel { }
+    public interface IResponseModel : IModel { }
 
     public class IdResponseModel : IResponseModel
     {
