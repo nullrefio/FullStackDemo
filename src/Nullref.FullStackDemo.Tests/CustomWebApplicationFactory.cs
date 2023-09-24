@@ -19,7 +19,7 @@ namespace Nullref.FullStackDemo.Tests
                 // add back the json configuration, this time _without_ watchers on the files
                 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: false);
 
-                // Add non-null mongo connection string
+                // Add non-null database connection string
                 var builder = new ConfigurationBuilder();
                 builder.AddCommandLine(new string[] { });
                 var configuration = builder.Build();

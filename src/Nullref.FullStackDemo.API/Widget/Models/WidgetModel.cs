@@ -3,6 +3,7 @@ using static Nullref.FullStackDemo.Database.Entity.Widget;
 
 namespace Nullref.FullStackDemo.API.Widget.Models
 {
+    [ReadOnly(true)]
     public class WidgetModel : WidgetUpdateModel
     {
         [Required]
@@ -43,7 +44,6 @@ namespace Nullref.FullStackDemo.API.Widget.Models
 
         [Required]
         [DefaultValue(DefaultValues.MyFruit)]
-        [EnumDataType(typeof(FruitConstants))]
         public FruitConstants MyFruit { get; set; } = DefaultValues.MyFruit;
     }
 }
