@@ -8,7 +8,7 @@ Using C# to control Angular validation and controls
 
 [Functional C# with examples](https://medium.com/@nullref/functional-c-with-examples-4e9fc2ff236f)
 
-[C# static analysis with unit tests](https://medium.com/@nullref/c-unit-test-static-analysis-ecaacf984df7)
+[C# static analysis using unit tests](https://medium.com/@nullref/c-unit-test-static-analysis-ecaacf984df7)
 
 This demo project uses C# validation attributes and custon Swagger generation to define compile-tim checked Typescript. The Angular controls and HTML are defined from object metadata constants emitted from the Swagger document including nullable, default, allow sort, data type, readonly, maxlength, minlength, required, identifier, display name, and description (tooltip).
 
