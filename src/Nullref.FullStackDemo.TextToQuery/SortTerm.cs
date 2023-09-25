@@ -1,6 +1,6 @@
 namespace Nullref.FullStackDemo.TextToQuery
 {
-    public class SortTerm
+    internal class SortTerm
     {
         public string? Field { get; set; }
         public string? MappedField { get; set; }

@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Nullref.FullStackDemo.TextToQuery
 {
-    public static class ExpressionHelper
+    internal static class ExpressionHelper
     {
         private static readonly MethodInfo LambdaMethod = typeof(Expression)
             .GetMethods()

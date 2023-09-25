@@ -27,9 +27,10 @@ namespace Nullref.FullStackDemo.Tests
         {
             var service = new WidgetService(_context);
 
+            var codeWithSpaces = "   qqq    ";
             var newItem = new API.Widget.Models.WidgetModel
             {
-                Code = "qqq",
+                Code = codeWithSpaces,
                 Description = "www",
                 IsActive = true,
                 MyFruit = Database.Entity.FruitConstants.Pear,
@@ -40,7 +41,10 @@ namespace Nullref.FullStackDemo.Tests
             var item = _context.Widget.FirstOrDefault(x => x.Id == id);
             Assert.NotNull(item);
             Assert.Equal(newItem.Description, item.Description);
-            Assert.Equal(newItem.Code, item.Code);
+            //The 'Code' has spaces
+            Assert.Equal(codeWithSpaces, newItem.Code);
+            //The validation should Trim the spaces on the newly created item
+            Assert.Equal(codeWithSpaces.Trim(), item.Code);
         }
 
         [Fact]

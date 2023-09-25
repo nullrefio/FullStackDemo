@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace Nullref.FullStackDemo.TextToQuery
 {
-    public class SortOptionsProcessor<TModel, TEntity>
+    internal class SortOptionsProcessor<TModel, TEntity>
     {
         private List<string> _applied = new();
 

@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Nullref.FullStackDemo.TextToQuery
 {
-    public class SearchOptionsProcessor<TModel, TEntity>
+    internal class SearchOptionsProcessor<TModel, TEntity>
     {
         private readonly string[] _searchWords;
         private readonly bool _lowerProperty = false;

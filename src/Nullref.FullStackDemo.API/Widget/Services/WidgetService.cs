@@ -39,6 +39,8 @@ namespace Nullref.FullStackDemo.API.Services
 
         public Guid Create(WidgetUpdateModel model)
         {
+            model.Validate();
+
             var dbItem = new Database.Entity.Widget
             {
                 Code = model.Code,
@@ -53,6 +55,8 @@ namespace Nullref.FullStackDemo.API.Services
 
         public void Update(Guid id, WidgetUpdateModel model)
         {
+            model.Validate();
+
             var item = _context.Widget
                 .FirstOrDefault(x => x.Id == id)
                 .ThrowIfNotFound();
@@ -87,6 +91,7 @@ namespace Nullref.FullStackDemo.API.Services
                     IsActive = item.IsActive,
                     MyFruit = item.MyFruit,
                     State = item.State,
+                    CreatedDate = item.CreatedDate.ToLocalDateTime(),
                 };
     }
 }
