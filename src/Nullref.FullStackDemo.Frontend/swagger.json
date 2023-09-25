@@ -285,6 +285,7 @@
       "WidgetModel": {
         "required": [
           "code",
+          "createdDate",
           "description",
           "id",
           "isActive",
@@ -343,6 +344,14 @@
             "format": "uuid",
             "readOnly": true,
             "displayName": "Id",
+            "description": "",
+            "allowSort": false
+          },
+          "createdDate": {
+            "type": "string",
+            "readOnly": true,
+            "example": "2018-01-09T09:04:06",
+            "displayName": "CreatedDate",
             "description": "",
             "allowSort": false
           }

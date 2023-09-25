@@ -50,5 +50,8 @@ namespace Nullref.FullStackDemo.Database.Entity
         [Required]
         [DefaultValue(DefaultValues.MyFruit)]
         public FruitConstants MyFruit { get; set; } = DefaultValues.MyFruit;
+
+        [Required]
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     }
 }

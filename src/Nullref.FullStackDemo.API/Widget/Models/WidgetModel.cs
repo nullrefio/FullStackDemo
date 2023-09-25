@@ -1,3 +1,4 @@
+using Nullref.FullStackDemo.CommonModels.Attributes;
 using Nullref.FullStackDemo.Database.Entity;
 using static Nullref.FullStackDemo.Database.Entity.Widget;
 
@@ -8,10 +9,15 @@ namespace Nullref.FullStackDemo.API.Widget.Models
     {
         [Required]
         public Guid Id { get; internal set; }
+
+        [Required]
+        [LocalDateTimeRange]
+        public NodaTime.LocalDateTime CreatedDate { get; internal set; } = DateTime.UtcNow.ToLocalDateTime();
     }
 
-    public class WidgetUpdateModel : IModel
+    public class WidgetUpdateModel : AbstractValidatableModel, IModel
     {
+        [AutoTrim]
         [Searchable]
         [Sortable(IsDefault = true)]
         [Required]
@@ -25,6 +31,7 @@ namespace Nullref.FullStackDemo.API.Widget.Models
         [DefaultValue(DefaultValues.IsActive)]
         public bool IsActive { get; set; } = DefaultValues.IsActive;
 
+        [AutoTrim]
         [Searchable]
         [Required]
         [MaxLength(MaxLengthValues.Description)]
@@ -33,6 +40,7 @@ namespace Nullref.FullStackDemo.API.Widget.Models
         [DisplayName("My custom header")]
         public string Description { get; set; }
 
+        [AutoTrim]
         [Searchable]
         [Sortable]
         [Required]

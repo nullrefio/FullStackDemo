@@ -1,5 +1,7 @@
+using MicroElements.Swashbuckle.NodaTime;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using NodaTime;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Nullref.FullStackDemo.API.ServiceInstallers
@@ -36,6 +38,10 @@ namespace Nullref.FullStackDemo.API.ServiceInstallers
 
                 c.EnableAnnotations();
                 c.OrderActionsBy((apiDesc) => $"{apiDesc.ActionDescriptor.RouteValues["controller"]}_{apiDesc.HttpMethod}");
+
+                // support NodaTime
+                var exampleDate = new DateTime(2018, 1, 9, 14, 4, 6, DateTimeKind.Utc);
+                c.ConfigureForNodaTime(schemaExamples: new SchemaExamples(DateTimeZoneProviders.Tzdb, exampleDate, DateTimeZoneProviders.Tzdb.GetZoneOrNull("EST").ToString()));
             });
 
         }

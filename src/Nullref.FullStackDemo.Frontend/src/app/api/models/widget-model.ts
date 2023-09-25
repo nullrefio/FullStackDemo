@@ -7,6 +7,7 @@ export interface WidgetModel {
    * The widget code
    */
   code: string;
+  createdDate: string;
 
   /**
    * A tooltip for description
@@ -25,6 +26,7 @@ export interface WidgetModel {
 export const WidgetModelMetadata = {
   identifier: {
     code: 'code',
+    createdDate: 'createdDate',
     description: 'description',
     id: 'id',
     isActive: 'isActive',
@@ -43,6 +45,7 @@ export const WidgetModelMetadata = {
   },
   readOnly: {
     code: false,
+    createdDate: true,
     description: false,
     id: true,
     isActive: false,
@@ -51,6 +54,7 @@ export const WidgetModelMetadata = {
   },
   required: {
     code: true,
+    createdDate: true,
     description: true,
     id: true,
     isActive: true,
@@ -59,6 +63,7 @@ export const WidgetModelMetadata = {
   },
   nullable: {
     code: false,
+    createdDate: false,
     description: false,
     id: false,
     isActive: false,
@@ -77,6 +82,7 @@ export const WidgetModelMetadata = {
   },
   allowSort: {
     code: true,
+    createdDate: false,
     description: false,
     id: false,
     isActive: true,
@@ -85,6 +91,7 @@ export const WidgetModelMetadata = {
   },
   displayName: {
     code: 'Code',
+    createdDate: 'CreatedDate',
     description: 'My custom header',
     id: 'Id',
     isActive: 'IsActive',
@@ -93,6 +100,7 @@ export const WidgetModelMetadata = {
   },
   description: {
     code: 'The widget code',
+    createdDate: '',
     description: 'A tooltip for description',
     id: '',
     isActive: '',
